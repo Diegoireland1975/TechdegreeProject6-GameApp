@@ -2,6 +2,7 @@ const qwerty = document.querySelector("#qwerty");
 const phrase = document.querySelector("#prhase");
 const startBtn = document.querySelector(".btn__reset");
 const overlay = document.querySelector("#overlay");
+let scoreboard = document.querySelector("#scoreboard ol");
 let missed = 0;
 const phrases = [
   "Css is Awesome",
@@ -31,3 +32,14 @@ function getRandomPhraseAsArray(array) {
 }
 
 getRandomPhraseAsArray(phrases);
+
+function addPhraseToDisplay(arr) {
+  // do stuff any arr that is passed in, and add to `#phrase ul`
+  for (let i = 0; i < arr.length; i++) {
+    const letter = arr[i];
+    const li = document.createElement("li");
+    const ul = document.getElementById("phrase ul");
+    li.textContent = letter;
+    ul.appendChild(li);
+  }
+}
