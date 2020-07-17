@@ -64,9 +64,3 @@ qwerty.addEventListener("click", (e) => {
     let letterFound = checkLetter(button);
   }
 });
-
-const win = document.createElement("h3");
-win.textContent = "You win Congratulations";
-
-const lose = document.createElement("h3");
-lose.textContent = "You are a Looser!!!";
