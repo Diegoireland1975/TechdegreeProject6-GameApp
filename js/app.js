@@ -32,7 +32,7 @@ function addPhraseToDisplay(arr) {
   for (let i = 0; i < arr.length; i++) {
     const letter = arr[i];
     const li = document.createElement("li");
-    const ul = document.getElementById("phrase ul");
+    const ul = document.querySelector("#phrase ul");
     li.textContent = letter;
     ul.appendChild(li);
     if (letter !== " ") {
