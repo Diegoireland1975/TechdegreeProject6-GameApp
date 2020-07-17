@@ -10,6 +10,7 @@ const phrases = [
   "I wanna be a Front End Developer",
   "You learn something new every day",
   "I love Coding Pizza and IceCream",
+  "Javascript has the ability to fry my brain",
 ];
 
 startBtn.addEventListener("click", () => {
