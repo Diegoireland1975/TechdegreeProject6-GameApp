@@ -31,8 +31,9 @@ function getRandomPhraseAsArray(array) {
   return randomPhrase;
 }
 
-getRandomPhraseAsArray(phrases);
+const splitRandomPhrase = getRandomPhraseAsArray(phrases);
 
+// ADD PHRASE TO DISPLAY - LOOP & CREATE ELEMENTS
 function addPhraseToDisplay(arr) {
   // do stuff any arr that is passed in, and add to `#phrase ul`
   for (let i = 0; i < arr.length; i++) {
@@ -41,5 +42,23 @@ function addPhraseToDisplay(arr) {
     const ul = document.getElementById("phrase ul");
     li.textContent = letter;
     ul.appendChild(li);
+    if (letter !== " ") {
+      li.className = "letter";
+    } else {
+      li.className = "space";
+    }
   }
+}
+
+// CHECK LETTER FUNCTION
+function checkLetter(button) {
+  const letters = document.getElementsByClassName("letter");
+  let match = null;
+  for (let i = 0; i < letters.length; i++) {
+    if (letter.textContent === button) {
+      letter.classList.add("show");
+      match = button.textContent;
+    }
+  }
+  return match;
 }
