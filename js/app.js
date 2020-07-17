@@ -12,17 +12,10 @@ const phrases = [
   "I love Coding Pizza and IceCream",
 ];
 
-const win = document.createElement("h3");
-win.textContent = "You win Congratulations";
-
-const lose = document.createElement("h3");
-lose.textContent = "You are a Looser!!!";
-
 startBtn.addEventListener("click", () => {
   overlay.style.display = "none";
 });
 
-// Math.floor(Math.random() * 5 + 1);
 function getRandomPhraseAsArray(array) {
   //random number based on length of array
   let randomNum = Math.floor(Math.random() * Math.floor(array.length));
@@ -62,3 +55,18 @@ function checkLetter(button) {
   }
   return match;
 }
+
+// add evenListener on Keyboard
+qwerty.addEventListener("click", (e) => {
+  if (e.target.tagName === "button") {
+    e.target.classList.add("chosen");
+    let button = event.target.textContent;
+    let letterFound = checkLetter(button);
+  }
+});
+
+const win = document.createElement("h3");
+win.textContent = "You win Congratulations";
+
+const lose = document.createElement("h3");
+lose.textContent = "You are a Looser!!!";
