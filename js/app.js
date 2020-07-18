@@ -4,7 +4,7 @@ const startBtn = document.querySelector(".btn__reset");
 const overlay = document.querySelector("#overlay");
 let scoreboard = document.querySelector("#scoreboard ol");
 let missed = 0;
-const phrases = [
+let phrases = [
   "Css is Awesome",
   "Javascript is not easy at the beginning",
   "I wanna be a Front End Developer",
@@ -15,6 +15,8 @@ const phrases = [
 
 startBtn.addEventListener("click", () => {
   overlay.style.display = "none";
+
+  addPhraseToDisplay(getRandomPhraseAsArray(phrases));
 });
 
 function getRandomPhraseAsArray(array) {
@@ -59,9 +61,30 @@ function checkLetter(button) {
 
 // add evenListener on Keyboard
 qwerty.addEventListener("click", (e) => {
-  if (e.target.tagName === "button") {
+  if (e.target.tagName == "button") {
     e.target.classList.add("chosen");
     let button = event.target.textContent;
     let letterFound = checkLetter(button);
+    if (letterFound === null) {
+      missed += 1;
+      heart = document.querySelector(".tries");
+      scoreboard.removeChild(heart);
+      e.target.disabled = true;
+    }
   }
+  checkWin();
 });
+
+function checkWin() {
+  const letters = document.getElementsByClassName("letter");
+  const shown = document.getElementsByClassName("show");
+  if (letters.length == shown.length) {
+    overlay.classList.add("win");
+    title.textContent = "You Won";
+    overlay.style.display = "flex";
+  } else if (missed > 4) {
+    overlay.classList.add("lose");
+    title.textContent = "You are a looser!!!";
+    overlay.style.display = "flex";
+  }
+}
