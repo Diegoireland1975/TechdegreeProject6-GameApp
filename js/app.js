@@ -34,13 +34,13 @@ getRandomPhraseAsArray(phrases);
 // ADD PHRASE TO DISPLAY - LOOP & CREATE ELEMENTS
 function addPhraseToDisplay(arr) {
   // do stuff any arr that is passed in, and add to `#phrase ul`
-  for (let i = 0; i < arr.length; i += 1) {
-    const letter = arr[i];
+  for (let i = 0; i < arr.length; i++) {
     const li = document.createElement("li");
+    li.textContent = arr[i];
     const ul = document.querySelector("#phrase ul");
-    li.textContent = letter;
+    li.textContent = arr[i];
     ul.appendChild(li);
-    if (letter !== " ") {
+    if (arr[i] !== " ") {
       li.className = "letter";
     } else {
       li.className = "space";
@@ -48,15 +48,14 @@ function addPhraseToDisplay(arr) {
   }
 }
 
-addPhraseToDisplay(phraseArray);
 // CHECK LETTER FUNCTION
 function checkLetter(button) {
   const letters = document.getElementsByClassName("letter");
   let match = null;
   for (let i = 0; i < letters.length; i++) {
-    if (letter.textContent === button) {
-      match = letter;
-      letter.classList.add("show");
+    if (letters[i].textContent.toLowerCase() === button) {
+      letters[i].classList.add("show");
+      match = letter[i].textContent;
     }
   }
   return match;
