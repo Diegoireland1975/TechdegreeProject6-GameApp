@@ -55,7 +55,7 @@ function checkLetter(button) {
   for (let i = 0; i < letters.length; i++) {
     if (letters.textContent.toLowerCase() === button) {
       letters.classList.add("show");
-      match = button;
+      match = letters.textContent;
     }
   }
   return match;
@@ -78,12 +78,12 @@ qwerty.addEventListener("click", (e) => {
 });
 
 function checkWin() {
-  const letters = document.getElementsByClassName("letter");
-  const shown = document.getElementsByClassName("show");
+  const letters = document.querySelectorAll(".letter");
+  const shown = document.querySelectorAll(".show");
   let title = document.querySelector(".title");
   if (letters.length == shown.length) {
     overlay.classList.add("win");
-    overlay.textContent = "You Won";
+    overlay.textContent = "You Win";
     overlay.style.display = "flex";
   } else if (missed > 4) {
     overlay.classList.add("lose");
