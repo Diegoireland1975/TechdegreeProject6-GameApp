@@ -53,9 +53,9 @@ function checkLetter(button) {
   const letters = document.getElementsByClassName("letter");
   let match = null;
   for (let i = 0; i < letters.length; i++) {
-    if (letters[i].textContent.toLowerCase() === button) {
-      letters[i].classList.add("show");
-      match = letter[i].textContent;
+    if (letters.textContent.toLowerCase() === button) {
+      letters.classList.add("show");
+      match = button;
     }
   }
   return match;
