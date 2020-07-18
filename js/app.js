@@ -29,7 +29,7 @@ function getRandomPhraseAsArray(array) {
   return randomPhrase;
 }
 
-let phraseArray = getRandomPhraseAsArray(phrases);
+getRandomPhraseAsArray(phrases);
 
 // ADD PHRASE TO DISPLAY - LOOP & CREATE ELEMENTS
 function addPhraseToDisplay(arr) {
