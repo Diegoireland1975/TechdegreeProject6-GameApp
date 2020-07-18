@@ -13,12 +13,14 @@ let phrases = [
   "Javascript has the ability to fry my brain",
 ];
 
+// listen for the start game button to be pressed then display random phrase
 startBtn.addEventListener("click", () => {
   overlay.style.display = "none";
 
   addPhraseToDisplay(getRandomPhraseAsArray(phrases));
 });
 
+// get a random phrase from the phrases array
 function getRandomPhraseAsArray(array) {
   //random number based on length of array
   let randomNum = Math.floor(Math.random() * Math.floor(array.length));
@@ -27,12 +29,12 @@ function getRandomPhraseAsArray(array) {
   return randomPhrase;
 }
 
-const splitRandomPhrase = getRandomPhraseAsArray(phrases);
+let phraseArray = getRandomPhraseAsArray(phrases);
 
 // ADD PHRASE TO DISPLAY - LOOP & CREATE ELEMENTS
 function addPhraseToDisplay(arr) {
   // do stuff any arr that is passed in, and add to `#phrase ul`
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i += 1) {
     const letter = arr[i];
     const li = document.createElement("li");
     const ul = document.querySelector("#phrase ul");
@@ -46,14 +48,15 @@ function addPhraseToDisplay(arr) {
   }
 }
 
+addPhraseToDisplay(phraseArray);
 // CHECK LETTER FUNCTION
 function checkLetter(button) {
   const letters = document.getElementsByClassName("letter");
   let match = null;
   for (let i = 0; i < letters.length; i++) {
     if (letter.textContent === button) {
+      match = letter;
       letter.classList.add("show");
-      match = button.textContent;
     }
   }
   return match;
@@ -61,9 +64,9 @@ function checkLetter(button) {
 
 // add evenListener on Keyboard
 qwerty.addEventListener("click", (e) => {
-  if (e.target.tagName == "button") {
+  if (e.target.tagName === "button") {
     e.target.classList.add("chosen");
-    let button = event.target.textContent;
+    let button = e.target.textContent;
     let letterFound = checkLetter(button);
     if (letterFound === null) {
       missed += 1;
@@ -78,13 +81,14 @@ qwerty.addEventListener("click", (e) => {
 function checkWin() {
   const letters = document.getElementsByClassName("letter");
   const shown = document.getElementsByClassName("show");
+  let title = document.querySelector(".title");
   if (letters.length == shown.length) {
     overlay.classList.add("win");
-    title.textContent = "You Won";
+    overlay.textContent = "You Won";
     overlay.style.display = "flex";
   } else if (missed > 4) {
     overlay.classList.add("lose");
-    title.textContent = "You are a looser!!!";
+    overlay.textContent = "You are a looser!!!";
     overlay.style.display = "flex";
   }
 }
