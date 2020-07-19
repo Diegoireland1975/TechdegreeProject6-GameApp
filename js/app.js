@@ -83,7 +83,7 @@ function checkWin() {
   let title = document.querySelector(".title");
   if (letters.length == shown.length) {
     overlay.classList.add("win");
-    overlay.textContent = "Congratulations You Win!!!!";
+    overlay.textContent = "Congratulations You Won!!!! ";
     overlay.style.display = "flex";
   } else if (missed > 4) {
     overlay.classList.add("lose");
